@@ -1,4 +1,5 @@
-FROM debian:stretch-slim
+#FROM ubuntu:bionic
+FROM cesarius1970/bionic_es-pe
 
 LABEL maintainer="contact@ocsinventory-ng.org"
 LABEL version="2.5"
@@ -13,17 +14,17 @@ RUN apt-get update ; \
     apache2 \
     apache2-doc \
     apt-utils \
-    php7.0 \
-    php7.0-gd \
-    php7.0-mysql \
-    php7.0-cgi \
-    php7.0-curl \
-    php7.0-xml \
-    php7.0-soap \
-    php7.0-zip \
+    php \
+    php-gd \
+    php-mysql \
+    php-cgi \
+    php-curl \
+    php-xml \
+    php-soap \
+    php-zip \
     perl \
     build-essential \
-    libapache2-mod-php7.0 \
+    libapache2-mod-php \
     libxml2 \
     libxml-simple-perl \
     libc6-dev \
@@ -105,7 +106,7 @@ RUN chown www-data: /usr/share/ocsinventory-reports/ocsreports/dbconfig.inc.php 
     rm -rf /var/lib/apt/lists/* ;\
     rm -rf /var/cache/apt/archives/* ;
 
-EXPOSE 80
-EXPOSE 443
+EXPOSE 5080
+EXPOSE 5443
 
 CMD ["/bin/bash", "/root/run.sh"]
